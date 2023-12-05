@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Contact>
+
+<h2>Booking List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Contact ID</th>
+            <th>Contact Name</th>
+            <th>Contact Email</th>
+            <th>Contact Subject</th>
+            <th>Contact Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td>@contact.ContactID</td>
+                <td>@contact.ContactName</td>
+                <td>@contact.ContactEmail</td>
+                <td>@contact.ContactSubject</td>
+                <td>@contact.ContactMessage</td>
+                <td>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@contact.ContactID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

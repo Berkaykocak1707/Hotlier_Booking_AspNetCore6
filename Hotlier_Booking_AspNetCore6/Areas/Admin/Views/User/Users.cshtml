@@ -1,0 +1,59 @@
+﻿@model IEnumerable<IdentityUser>
+@{
+    int num = 1;
+}
+<div class="text-center">
+    <div class="display-6">
+        Users
+        <br />
+        <a asp-action="Create" class="btn btn-outline-danger">
+            <i class="fa fa-plus"></i>
+            Create
+        </a>
+    </div>
+    <table class="table table-striped-columns table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Id</th>
+                <th>UserName</th>
+                <th>Email</th>
+                <th>PhoneNumber</th>
+                <th>Roles</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (IdentityUser item in Model)
+            {
+                <tr>
+                    <td>@num</td>
+                    <td>@item.Id</td>
+                    <td>
+                        @item.UserName
+                    </td>
+                    <td>@item?.Email</td>
+                    <td>@item?.PhoneNumber</td>
+                    <td user-name="@item.UserName" user-role=""></td>
+                    <td>
+                        <div class="btn btn-group">
+                            <a class="btn btn-warning" asp-action="Update" asp-route-id="@item.UserName">
+                        <i class="fa fa-edit"></i>
+                        Edit
+                        </a>
+                            <a class="btn btn-secondary" asp-action="ResetPassword" asp-route-id="@item?.UserName">
+                                <i class="fa fa-edit"></i>
+                                ResetPassword
+                            </a>
+                            <a class="btn btn-danger" asp-action="DeleteUser" asp-route-id="@item?.UserName">
+                                <i class="fa fa-cross"></i>
+                                Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                num++;
+            }
+        </tbody>
+    </table>
+</div>

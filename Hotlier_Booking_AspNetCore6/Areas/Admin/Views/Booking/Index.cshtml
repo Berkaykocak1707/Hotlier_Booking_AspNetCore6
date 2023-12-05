@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Booking>
+
+<h2>Booking List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Booking Name</th>
+            <th>Booking Email</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+            <th>Adult</th>
+            <th>Child</th>
+            <th>Room</th>
+            <th>Booking Message</th>
+            <th>Is Done</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.BookingID</td>
+                <td>@booking.BookingName</td>
+                <td>@booking.BookingEmail</td>
+                <td>@booking.CheckIn</td>
+                <td>@booking.CheckOut</td>
+                <td>@booking.Adult</td>
+                <td>@booking.Child</td>
+                <td><a class="btn btn-outline-primary" asp-controller="Room" asp-action="Index">@booking.Room?.RoomName</a> </td>
+                <td>@booking.BookingMessage</td>
+                <td>@(booking.IsDone.HasValue ? booking.IsDone.Value ? "Yes" : "No" : "N/A")</td>
+                <td>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@booking.BookingID">Delete</a>
+                    @if (booking.IsDone is not true)
+                    {
+                        <a class="btn btn-outline-danger" asp-action="Done" asp-route-id="@booking.BookingID">Done</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

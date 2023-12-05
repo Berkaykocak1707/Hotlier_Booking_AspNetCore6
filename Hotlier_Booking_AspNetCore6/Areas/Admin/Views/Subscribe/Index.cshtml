@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Subscribe>
+
+<h2>
+    Subscribe List
+</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Subscribe ID</th>
+            <th>Subscribe Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subscribe in Model)
+        {
+            <tr>
+                <td>@subscribe.SubscribeID</td>
+                <td>@subscribe.SubscribeEmail</td>
+                <td>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@subscribe.SubscribeID"> Delete </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

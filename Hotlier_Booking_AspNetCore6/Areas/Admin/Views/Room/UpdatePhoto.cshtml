@@ -1,0 +1,26 @@
+﻿@model RoomDtoForUpdate
+
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="text-center">Create Room</h2>
+            
+            <form method="post" asp-action="UpdatePhoto" enctype="multipart/form-data">
+                <input type="hidden" asp-for="RoomID" value="@Model.RoomID" />
+                <div class="form-group mb-2">
+                    <label asp-for="RoomPhotoUrl" class="control-label">Room Photo URL</label>
+                    <input name="file" type="file" class="form-control" />
+                </div>
+                <input type="hidden" asp-for="RoomName" value="@Model.RoomName" />
+                <input type="hidden" asp-for="RoomDetail" value="@Model.RoomDetail" />
+                <input type="hidden" asp-for="RoomBed" value="@Model.RoomBed" />
+                <input type="hidden" asp-for="RoomBath" value="@Model.RoomBath" />
+                <input type="hidden" asp-for="RoomPrice" value="@Model.RoomPrice" />
+                <input type="hidden" asp-for="RoomAvailableDate" value="@Model.RoomAvailableDate" />
+                <input type="hidden" asp-for="IsRoomActive" value="@Model.IsRoomActive" />
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+    </div>
+</div>

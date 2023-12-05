@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Room>
+
+<!-- Room List -->
+<h2>Room List | <a class="btn btn-outline-success" asp-action="Create">
+            <i class="fa fa-plus"></i>
+            Create
+        </a></h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Room Name</th>
+            <th>Room Photo</th>
+            <th>Price/Night</th>
+            <th>Available Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var room in Model)
+        {
+            <tr>
+                <td>@room.RoomName</td>
+                <td><img src="@room.RoomPhotoUrl" alt="@room.RoomDetail" width="100" height="75"> <a class="btn btn-outline-primary" target="_blank" asp-action="UpdatePhoto" asp-route-id="@room.RoomID"> Update Photo </a></td>
+                <td>@room.RoomPrice</td>
+                <td>@room.RoomAvailableDate.ToString("dd-MM-yyyy")</td>
+                <td>
+                    <a class="btn btn-outline-primary" asp-action="Update" asp-route-id="@room.RoomID"> Update </a>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@room.RoomID"> Delete </a>
+                                
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
